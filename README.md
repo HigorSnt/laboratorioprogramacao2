@@ -6,8 +6,8 @@ Repositório com os laboratórios e as provas desenvolvidas ao longo da discipli
 
 ## Informações
 
-**Universidade Federal de Campina Grande**
-**Disciplina:** Laboratório de Programação 02
+**Universidade Federal de Campina Grande**  
+**Disciplina:** Laboratório de Programação 02  
 **Período:** 2018.2
 
 ## Links
