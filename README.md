@@ -15,11 +15,13 @@ Repositório com os laboratórios e as provas desenvolvidas ao longo da discipli
 * Laboratório 2
 * Laboratório 3
 * Laboratório 4
-* [Laboratório 5 - SAGA](https://github.com/HigorSnt/SAGA)
+* [Laboratório 5 - SAGA](https://github.com/HigorSnt/SAGA "SAGA")
 * Simulado
 * Prova 1
 * Prova 2
 * Prova 3
+
+* [**Projeto - eDoe**](https://github.com/HigorSnt/eDoe "eDoe")
 
 
 <p align="center">
