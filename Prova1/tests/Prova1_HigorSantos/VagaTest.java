@@ -35,14 +35,14 @@ class VagaTest {
 	
 	@Test
 	void testOcupaVaga() {
-		this.vaga2.ocupaVaga("SOS454", LocalTime.of(LocalTime.now().getHour() + 2, LocalTime.now().getMinute()));
+		this.vaga2.ocupaVaga("SOS454", LocalTime.of(20, LocalTime.now().getMinute()));
 		
 		assertEquals(LocalTime.now().getHour(), this.vaga1.getHoraChegada());
 		assertEquals("SOS000", this.vaga1.getPlaca());
 		assertEquals("A/1", this.vaga1.getLocalizacao());
 		assertFalse(this.vaga1.isVagaLivre());
 		
-		assertEquals(LocalTime.now().getHour() + 2, this.vaga2.getHoraChegada());
+		assertEquals(20, this.vaga2.getHoraChegada());
 		assertEquals("SOS454", this.vaga2.getPlaca());
 		assertEquals("A/4", this.vaga2.getLocalizacao());
 		assertFalse(this.vaga2.isVagaLivre());
@@ -51,10 +51,10 @@ class VagaTest {
 
 	@Test
 	void testDesocupaVaga() {
-		this.vaga2.ocupaVaga("SOS454", LocalTime.of(LocalTime.now().getHour() + 2, LocalTime.now().getMinute()));
+		this.vaga2.ocupaVaga("SOS454", LocalTime.of(20, LocalTime.now().getMinute()));
 		
 		assertEquals(5.0, this.vaga1.desocupaVaga(LocalTime.of(LocalTime.now().getHour() + 2, LocalTime.now().getMinute() + 2)));
-		assertEquals(6.0, this.vaga2.desocupaVaga(LocalTime.of(LocalTime.now().getHour() + 3, LocalTime.now().getMinute() + 3)));
+		assertEquals(6.0, this.vaga2.desocupaVaga(LocalTime.of(23, LocalTime.now().getMinute() + 3)));
 		
 		assertTrue(this.vaga1.isVagaLivre());
 		assertNull(this.vaga1.getPlaca());
@@ -65,14 +65,15 @@ class VagaTest {
 	
 	@Test
 	void testHashCode() {
-		assertEquals(33998, this.vaga1.hashCode());
+		assertEquals(34004, this.vaga1.hashCode());
+		assertEquals(36881, this.vaga2.hashCode());
 	}
 	
 	@Test
 	void testEqualsObject() {
 		Vaga vaga = new Vaga("A", 1);
 		Vaga outraVaga = new Vaga("B", 1);
-		//vaga.ocupaVaga("AAA111");
+		vaga.ocupaVaga("AAA111", LocalTime.now());
 		
 		Vaga vagaNula = null;
 		Vaga vagaSetorNulo1 = new Vaga (null, 1);

@@ -20,25 +20,26 @@ public class Estacionamento {
 	}
 	
 	private void inicializaVagas() {
-		for (int i = 0; i < vagas.length; i++) {
-			vagas[i] = new Vaga("A", i+1);
+		for (int i = 0; i < this.vagas.length; i++) {
+			this.vagas[i] = new Vaga("A", i+1);
 		}
 	}
 	
 	public void estacionarCarro(String placa) {
-		for (int i = 0; i < vagas.length; i++) {
-			if (!vagas[i].isVagaLivre()) {
-				vagas[i].ocupaVaga(placa, LocalTime.now());
+		for (int i = 0; i < this.vagas.length; i++) {
+			if (!this.vagas[i].isVagaLivre()) {
+				this.vagas[i].ocupaVaga(placa, LocalTime.now());
 				break;
 			}
 		}
 	}
 	
 	public String liberarVaga(String placa) {
-		for (int i = 0; i < vagas.length; i++) {
-			if (vagas[i].getPlaca().equals(placa)) {
-				this.caixa = vagas[i].desocupaVaga(LocalTime.now());
-				return "Valor a ser pago: R$ " + this.caixa;
+		for (int i = 0; i < this.vagas.length; i++) {
+			if (this.vagas[i].getPlaca().equals(placa)) {
+				double preco = this.vagas[i].desocupaVaga(LocalTime.now());
+				this.caixa += preco;
+				return "Valor a ser pago: R$ " + preco;
 			}
 		}
 		return "Vaga não encontrada";
@@ -46,18 +47,18 @@ public class Estacionamento {
 	
 	public String exibirVagasLivres() {
 		String vagasLivre = "";
-		for (int i = 0; i < vagas.length; i++) {
-			if (!vagas[i].isVagaLivre()) {
-				vagasLivre += vagas[i].toString() + "\n";
+		for (int i = 0; i < this.vagas.length; i++) {
+			if (!this.vagas[i].isVagaLivre()) {
+				vagasLivre += this.vagas[i].toString() + System.lineSeparator();
 			}
 		}
 		return vagasLivre;
 	}
 	
 	public String localizaCarro(String placa) {
-		for (int i = 0; i < vagas.length; i++) {
-			if (vagas[i].getPlaca().equals(placa)) {
-				return vagas[i].toString();
+		for (int i = 0; i < this.vagas.length; i++) {
+			if (this.vagas[i].getPlaca().equals(placa)) {
+				return this.vagas[i].toString();
 			}
 		}
 		return "Carro não encntrado";

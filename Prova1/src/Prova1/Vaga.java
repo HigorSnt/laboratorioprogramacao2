@@ -25,10 +25,11 @@ public class Vaga {
 	public double desocupaVaga(LocalTime horaSaida) {
 		this.vagaLivre = true;
 		this.placa = null;
+		
 		if ((horaSaida.getHour() - this.horaChegada.getHour()) <= 2) {
 			return (5.0);
 		} else {
-			return (5.0 + (horaSaida.getHour() - horaChegada.getHour()));
+			return (5.0 + Math.abs(2 - (horaSaida.getHour() - horaChegada.getHour())));
 		}
 	}
 
@@ -50,8 +51,8 @@ public class Vaga {
 
 	@Override
 	public String toString() {
-		return "Vaga [setor = " + setor + ", posicao = " + posicao + ", status = " + (vagaLivre ? "DESOCUPADO" : "OCUPADO")
-	+ "]";
+		return "Vaga [setor = " + setor + ", posicao = " + posicao + ", status = " + 
+	(vagaLivre ? "DESOCUPADO" : "OCUPADO") + "]";
 	}
 
 	@Override
