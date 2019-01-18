@@ -19,7 +19,7 @@ Repositório com os laboratórios e as provas desenvolvidas ao longo da discipli
 * Simulado
 * [Prova 1](/Prova1 "Prova 1")
 * [Prova 2](/Prova2 "Prova 2")
-* Prova 3
+* [Prova 3](/Prova3 "Prova 3")
 
 * [**Projeto - eDoe**](https://github.com/HigorSnt/eDoe "eDoe")
 
