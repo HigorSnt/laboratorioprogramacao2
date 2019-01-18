@@ -1,7 +1,5 @@
 package prova3;
 
-import java.util.Comparator;
-
 public abstract class Produto {
 	
 	protected String nome;

@@ -16,6 +16,10 @@ public class ControllerCarrinho {
 	}
 	
 	public void adicionaProdutoAoCarrinho(int id, Produto produto) {
+		if(!this.carrinho.containsKey(id)) {
+			throw new CarrinhoNaoCadastradoException();
+		}
+		
 		this.carrinho.get(id).adicionaProdutoAoCarrinho(produto);
 	}
 	
