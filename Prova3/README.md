@@ -67,5 +67,5 @@ A representação textual da listagem de Produtos deve ser em uma só linha e se
 
 Faça testes de unidade para a(s) entidade(s) responsáveis pelo Carrinho e compras de produtos.
 
-<hr width=50%/>
+<hr width=50%/ align="center">
 ¹  categoria é um atributo válido para todos os Produtos, mas é relevante apenas para o cálculo do preço de Jogos.
