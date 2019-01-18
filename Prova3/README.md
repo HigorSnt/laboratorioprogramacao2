@@ -34,7 +34,7 @@ Há especificidades entre os diferentes tipos de produtos que impactam no cálcu
 | :-----: | :------------------:  | :-------------------------------------------------: |
 | Oficina | (double) cargahoraria |           preço = cargahoraria * **valor**          |
 | Livro   | (String) estado, só pode ser  {"Novo", "Usado"} | Se estado é "Usado": preço = **valor** - 50% de **valor**; caso contrário, **preço = valor** |
-| Jogo    | (String) categoria¹, só pode ser {"Infantil", "Juvenil"} | Se categoria "Infantil", preço = **valor** - 5% de **valor**; caso contrário, **preço = valor** |
+| Jogo    | (String) categoria [^1], só pode ser {"Infantil", "Juvenil"} | Se categoria "Infantil", preço = **valor** - 5% de **valor**; caso contrário, **preço = valor** |
 
 Por este motivo, a adição de produtos deve ser distinta:
 * void adicionaOficina(String nome, String categoria, double valor, double cargahoraria)
@@ -67,5 +67,6 @@ A representação textual da listagem de Produtos deve ser em uma só linha e se
 
 Faça testes de unidade para a(s) entidade(s) responsáveis pelo Carrinho e compras de produtos.
 
-<hr width=50%/ align="center">
-¹  categoria é um atributo válido para todos os Produtos, mas é relevante apenas para o cálculo do preço de Jogos.
+___________________________________
+
+[^1]:  categoria é um atributo válido para todos os Produtos, mas é relevante apenas para o cálculo do preço de Jogos.
