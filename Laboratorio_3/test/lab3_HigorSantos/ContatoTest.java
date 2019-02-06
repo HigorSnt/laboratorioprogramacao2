@@ -26,7 +26,7 @@ class ContatoTest {
 	
 	@Test
 	public void testContato() {
-		assertThrows(NullPointerException.class, () -> {new Contato(null, "Exemplo", "000000");	});
+		assertThrows(NullPointerException.class, () -> {   new Contato(null, "Exemplo", "000000");	});
 		assertThrows(NullPointerException.class, () -> new Contato("Higor", "Santos", null));
 		assertThrows(NullPointerException.class, () -> new Contato("Higor", null, "14516884646"));
 		assertThrows(NullPointerException.class, () -> new Contato(null, "Santos", null));
@@ -38,6 +38,13 @@ class ContatoTest {
 		assertThrows(IllegalArgumentException.class, () -> new Contato("Oi", "teste", ""));
 		assertThrows(IllegalArgumentException.class, () -> new Contato("Oi", "", ""));
 		assertThrows(IllegalArgumentException.class, () -> new Contato("", "teste", ""));
+		
+		assertEquals("Higor", contato1.getNome());
+		assertEquals("Outra", contato2.getNome());
+		assertEquals("Fulano", contato3.getNome());
+		assertEquals("Fulano", contato4.getNome());
+		assertEquals("Outra", contato5.getNome());
+		assertEquals("Higor", contato6.getNome());
 	}
 
 	@Test
@@ -49,6 +56,10 @@ class ContatoTest {
 
 	@Test
 	public void testEqualsObject() {
+		assertTrue(contato1.equals(contato1));
+		assertFalse(contato1.equals(null));
+		assertFalse(contato1.equals("Teste"));
+		
 		assertTrue(contato1.equals(contato6));
 		assertTrue(contato2.equals(contato5));
 		assertTrue(contato3.equals(contato4));

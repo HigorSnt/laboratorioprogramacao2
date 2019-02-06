@@ -33,7 +33,7 @@ public class Menu {
 			switch(op) {
 			
 			case "C":
-				System.out.print("\nPosição: ");
+				System.out.print(System.lineSeparator() + "Posição: ");
 				posicao = sc.nextInt();
 				sc.nextLine();
 				
@@ -56,7 +56,7 @@ public class Menu {
 				System.out.print("Contato> ");
 				posicao = sc.nextInt();
 				sc.nextLine();
-				System.out.println("\n" + novoContato.exibeContato(posicao) + "\n");
+				System.out.println(System.lineSeparator() + novoContato.exibeContato(posicao) + System.lineSeparator());
 				break;
 			
 			case "L":
@@ -68,7 +68,7 @@ public class Menu {
 				if (op.equals("S")) {
 					System.out.println("Programa Encerrado!");
 				} else {
-					System.out.println("OPÇÃO INVÁLIDA!\n");
+					System.out.println("OPÇÃO INVÁLIDA!" + System.lineSeparator());
 				}
 			}
 		}while(!op.equals("S"));
@@ -79,7 +79,7 @@ public class Menu {
 		System.out.println("(C)adastrar Contato");
 		System.out.println("(L)istar Contatos");
 		System.out.println("(E)xibir Contato");
-		System.out.println("(S)air\n");
+		System.out.println("(S)air" + System.lineSeparator());
 		System.out.print("Opção> ");
 	}
 	

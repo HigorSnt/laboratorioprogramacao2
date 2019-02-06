@@ -10,7 +10,7 @@ import java.util.HashSet;
  *
  */
 public class Grupo {
-	private HashSet <Aluno> componentes = new HashSet<>();
+	private HashSet <Aluno> componentes;
 	private String nome;
 	
 	/**
@@ -20,6 +20,7 @@ public class Grupo {
 	 */
 	public Grupo(String nome) {
 		this.nome = nome;
+		this.componentes = new HashSet<>();
 	}
 
 	/** 
@@ -47,14 +48,14 @@ public class Grupo {
 	 * @return Retorna todos os alunos que foram alocados para o grupo.
 	 */
 	public String imprimeGrupo() {
-		String saida = "\nAlunos do grupo " + this.nome + ":\n";
+		String saida = System.lineSeparator() + "Alunos do grupo " + this.nome + ":" + System.lineSeparator();
 		
 		if (this.componentes.size() == 0) {
-			return saida + "NENHUM ALUNO CADASTRADO AINDA!\n";
+			return saida + "NENHUM ALUNO CADASTRADO AINDA!" + System.lineSeparator();
 		}
 		
 		for (Aluno aluno : this.componentes) {
-			saida += "* " + aluno.toString() + "\n";
+			saida += "* " + aluno.toString() + System.lineSeparator();
 		}
 		return saida;
 	}

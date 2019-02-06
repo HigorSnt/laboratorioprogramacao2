@@ -10,8 +10,8 @@ class ControleAlunoTest {
 	
 	@Test
 	public void testAddAluno() {
-		assertEquals("CADASTRO REALIZADO!\n", this.controle.addAluno("123", "João", "Elétrica"));
-		assertEquals("MATRÍCULA JÁ CADASTRADA!\n", this.controle.addAluno("123", "Pedro", "Administração"));
+		assertEquals("CADASTRO REALIZADO!" + System.lineSeparator(), this.controle.addAluno("123", "João", "Elétrica"));
+		assertEquals("MATRÍCULA JÁ CADASTRADA!" + System.lineSeparator(), this.controle.addAluno("123", "Pedro", "Administração"));
 		
 		assertThrows(IllegalArgumentException.class, ()-> this.controle.addAluno("", "", ""));
 		assertThrows(IllegalArgumentException.class, ()-> this.controle.addAluno("", "João", ""));
@@ -35,9 +35,11 @@ class ControleAlunoTest {
 
 	@Test
 	public void testCadastraGrupo() {
-		assertEquals("CADASTRO REALIZADO!\n", this.controle.cadastraGrupo("Coleções"));
-		assertEquals("GRUPO JÁ CADASTRADO!\n", this.controle.cadastraGrupo("COLEÇÕES"));
-		assertEquals("GRUPO JÁ CADASTRADO!\n", this.controle.cadastraGrupo("CoLeÇõEs"));
+		assertEquals("CADASTRO REALIZADO!" + System.lineSeparator(), this.controle.cadastraGrupo("Coleções"));
+		assertEquals("GRUPO JÁ CADASTRADO!" + System.lineSeparator(), this.controle.cadastraGrupo("COLEÇÕES"));
+		assertEquals("GRUPO JÁ CADASTRADO!" + System.lineSeparator(), this.controle.cadastraGrupo("CoLeÇõEs"));
+		assertEquals("CADASTRO REALIZADO!" + System.lineSeparator(), this.controle.cadastraGrupo("Grupo"));
+		
 		
 		assertThrows(IllegalArgumentException.class, ()-> this.controle.cadastraGrupo(""));
 		assertThrows(NullPointerException.class, ()-> this.controle.cadastraGrupo(null));
@@ -49,9 +51,9 @@ class ControleAlunoTest {
 		this.controle.addAluno("123", "João", "Elétrica");
 		this.controle.addAluno("874", "Gabi", "Engenharia Química");
 		
-		assertEquals("ALUNO NÃO CADASTRADO!\n", this.controle.alocaAluno("2000", "Coleções"));
-		assertEquals("GRUPO NÃO CADASTRADO!\n", this.controle.alocaAluno("123", "Listas"));
-		assertEquals("ALUNO ALOCADO!\n", this.controle.alocaAluno("123", "Coleções"));
+		assertEquals("ALUNO NÃO CADASTRADO!" + System.lineSeparator(), this.controle.alocaAluno("2000", "Coleções"));
+		assertEquals("GRUPO NÃO CADASTRADO!" + System.lineSeparator(), this.controle.alocaAluno("123", "Listas"));
+		assertEquals("ALUNO ALOCADO!" + System.lineSeparator(), this.controle.alocaAluno("123", "Coleções"));
 		
 		assertThrows(IllegalArgumentException.class, ()-> this.controle.alocaAluno("", ""));
 		assertThrows(NullPointerException.class, ()-> this.controle.alocaAluno(null, null));
@@ -62,7 +64,8 @@ class ControleAlunoTest {
 	public void testImprimeGrupo() {
 		this.controle.cadastraGrupo("Coleções");
 		
-		assertEquals("\nAlunos do grupo Coleções:\nNENHUM ALUNO CADASTRADO AINDA!\n", 
+		assertEquals(System.lineSeparator() + "Alunos do grupo Coleções:" + System.lineSeparator()
+				+ "NENHUM ALUNO CADASTRADO AINDA!" + System.lineSeparator(), 
 				this.controle.imprimeGrupo("Coleções"));
 		
 		this.controle.addAluno("123", "João", "Elétrica");
@@ -70,15 +73,15 @@ class ControleAlunoTest {
 		this.controle.alocaAluno("123", "Coleções");
 		this.controle.alocaAluno("874", "Coleções");
 		
-		String saida1 = "\nAlunos do grupo Coleções:\n"
-				+ "* 123 - João - Elétrica\n"
+		String saida1 = System.lineSeparator() + "Alunos do grupo Coleções:" + System.lineSeparator()
+				+ "* 123 - João - Elétrica" + System.lineSeparator()
 				+ "* 874 - Gabi - Engenharia Química";
 		
-		String saida2 = "\nAlunos do grupo Coleções:\n"
-				+ "* 874 - Gabi - Engenharia Química\n"
-				+ "* 123 - João - Elétrica\n";
+		String saida2 = System.lineSeparator() + "Alunos do grupo Coleções:" + System.lineSeparator()
+				+ "* 874 - Gabi - Engenharia Química" + System.lineSeparator()
+				+ "* 123 - João - Elétrica" + System.lineSeparator();
 		
-		assertEquals("GRUPO NÃO CADASTRADO.\n", this.controle.imprimeGrupo("Listas"));
+		assertEquals("GRUPO NÃO CADASTRADO." + System.lineSeparator(), this.controle.imprimeGrupo("Listas"));
 		assertTrue(this.controle.imprimeGrupo("Coleções").equals(saida1) ||
 				this.controle.imprimeGrupo("Coleções").equals(saida2));
 		
@@ -91,8 +94,8 @@ class ControleAlunoTest {
 	public void testRespondeuQuestao() {
 		this.controle.addAluno("147", "Maria", "Computação");
 		
-		assertEquals("ALUNO NÃO CADASTRADO!\n", this.controle.respondeuQuestao("200"));
-		assertEquals("ALUNO REGISTRADO!\n", this.controle.respondeuQuestao("147"));
+		assertEquals("ALUNO NÃO CADASTRADO!" + System.lineSeparator(), this.controle.respondeuQuestao("200"));
+		assertEquals("ALUNO REGISTRADO!" + System.lineSeparator(), this.controle.respondeuQuestao("147"));
 		
 		assertThrows(IllegalArgumentException.class, ()-> this.controle.respondeuQuestao(""));
 		assertThrows(NullPointerException.class, ()-> this.controle.respondeuQuestao(null));
@@ -100,7 +103,8 @@ class ControleAlunoTest {
 
 	@Test
 	public void testListarRespondeuQuestao() {
-		assertEquals("Alunos:\nNENHUM ALUNO CADASTRADO AINDA!\n", this.controle.listarRespondeuQuestao());
+		assertEquals("Alunos:" + System.lineSeparator() + 
+				"NENHUM ALUNO CADASTRADO AINDA!" + System.lineSeparator(), this.controle.listarRespondeuQuestao());
 		this.controle.addAluno("147", "Maria", "Computação");
 		this.controle.addAluno("874", "Gabi", "Engenharia Química");
 		this.controle.addAluno("123", "João", "Elétrica");
@@ -109,10 +113,10 @@ class ControleAlunoTest {
 		this.controle.respondeuQuestao("123");
 		this.controle.respondeuQuestao("147");
 		
-		String saida = "Alunos:\n1. 147 - Maria - Computação\n"
-				+ "2. 874 - Gabi - Engenharia Química\n"
-				+ "3. 123 - João - Elétrica\n"
-				+ "4. 147 - Maria - Computação\n";
+		String saida = "Alunos:" + System.lineSeparator() + "1. 147 - Maria - Computação" + System.lineSeparator()
+				+ "2. 874 - Gabi - Engenharia Química" + System.lineSeparator()
+				+ "3. 123 - João - Elétrica" + System.lineSeparator()
+				+ "4. 147 - Maria - Computação" + System.lineSeparator();
 		
 		assertEquals(saida, this.controle.listarRespondeuQuestao());
 	}

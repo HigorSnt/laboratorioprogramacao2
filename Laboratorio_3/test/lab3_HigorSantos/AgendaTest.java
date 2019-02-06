@@ -19,9 +19,9 @@ class AgendaTest {
 	@Test
 	public void testCadastraContato() {
 		Agenda agendatest = new  Agenda();
-		assertEquals("POSIÇÃO INVÁLIDA!\n", agendatest.cadastraContato(101, "ddsa", "dsfds", "aasd"));
-		assertEquals("POSIÇÃO INVÁLIDA!\n", agendatest.cadastraContato(101, "ddsa", "dsfds", "aasd"));
-		assertEquals("CADASTRO REALIZADO!\n", agendatest.cadastraContato(1, "teste", "lab", "4866888"));
+		assertEquals("POSIÇÃO INVÁLIDA!" + System.lineSeparator(), agendatest.cadastraContato(101, "ddsa", "dsfds", "aasd"));
+		assertEquals("POSIÇÃO INVÁLIDA!" + System.lineSeparator(), agendatest.cadastraContato(101, "ddsa", "dsfds", "aasd"));
+		assertEquals("CADASTRO REALIZADO!" + System.lineSeparator(), agendatest.cadastraContato(1, "teste", "lab", "4866888"));
 	}
 	
 	@Test
@@ -34,8 +34,14 @@ class AgendaTest {
 	@Test
 	public void testListarContatos() {
 		Agenda agendaVazia = new Agenda();
-		assertEquals("1 - teste1\n61 - teste3\n100 - teste2\n", agenda.listarContatos());
-		assertEquals("VOCÊ NÃO REGISTROU NENHUM CONTATO\n", agendaVazia.listarContatos());
+		assertEquals("1 - teste1" + System.lineSeparator() + "61 - teste3" + System.lineSeparator() + 
+				"100 - teste2" + System.lineSeparator(), agenda.listarContatos());
+		assertEquals("VOCÊ NÃO REGISTROU NENHUM CONTATO" + System.lineSeparator(), agendaVazia.listarContatos());
+	}
+	
+	@Test
+	public void testHashCode() {
+		assertEquals(1206268237, agenda.hashCode());
 	}
 	
 	@Test
@@ -45,6 +51,9 @@ class AgendaTest {
 		agenda1.cadastraContato(1, "teste1", "lab", "1565615656");
 		agenda1.cadastraContato(61, "teste3", "lab", "5654");
 		agenda1.cadastraContato(100, "teste2", "lab", "hbfthrt");
+		assertTrue(agenda.equals(agenda));
+		assertFalse(agenda.equals(null));
+		assertFalse(agenda.equals("TESTE"));
 		assertTrue(agenda1.equals(agenda));
 		assertFalse(agenda1.equals(agenda2));
 	}

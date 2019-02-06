@@ -60,9 +60,10 @@ public class Menu {
 			
 			default:
 				if (op.equals(FECHAR)) {
-					System.out.println("\nO PROGRAMA ESTÁ SENDO ENCERRADO! \nVOLTE SEMPRE! :)");
+					System.out.println(System.lineSeparator() + "O PROGRAMA ESTÁ SENDO ENCERRADO!" + 
+							System.lineSeparator() + "VOLTE SEMPRE! :)");
 				} else {
-					System.out.println("OPÇÃO INVÁLIDA! TENTE NOVAMENTE! :( \n");
+					System.out.println("OPÇÃO INVÁLIDA! TENTE NOVAMENTE! :(" + System.lineSeparator());
 				}
 			}
 		}while(!op.equals(FECHAR));

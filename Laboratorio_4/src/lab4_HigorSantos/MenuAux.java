@@ -30,10 +30,14 @@ public class MenuAux {
 	 * @return Retorna o menu do programa.
 	 */
 	public String imprimeMenu() {
-		return "(C)adastrar Aluno\n(E)xibir Aluno\n(N)ovo Grupo\n"
-				+ "(A)locar Aluno no Grupo e Imprimir Grupos\n"
-				+ "(R)egistrar Aluno que Respondeu\n(I)mprimir Alunos que Responderam\n"
-				+ "(O)ra, vamos fechar o programa!\n\nOPÇÃO> ";
+		return "(C)adastrar Aluno" + System.lineSeparator()
+				+ "(E)xibir Aluno" + System.lineSeparator()
+				+ "(N)ovo Grupo" + System.lineSeparator()
+				+ "(A)locar Aluno no Grupo e Imprimir Grupos" + System.lineSeparator()
+				+ "(R)egistrar Aluno que Respondeu" + System.lineSeparator()
+				+ "(I)mprimir Alunos que Responderam" + System.lineSeparator()
+				+ "(O)ra, vamos fechar o programa!" + System.lineSeparator() + System.lineSeparator()
+				+ "OPÇÃO> ";
 	}
 	/**
 	 * Método que pede uma matrícula, um nome e um curso e envia o pedido de cadastrar um aluno
@@ -66,7 +70,7 @@ public class MenuAux {
 		System.out.print("Matrícula: ");
 		matricula = entrada();
 		
-		return controle.consultaAluno(matricula) + "\n";	
+		return controle.consultaAluno(matricula) + System.lineSeparator();	
 	}
 
 	/**
@@ -101,7 +105,7 @@ public class MenuAux {
 			return imprimeGrupo();
 		}
 		
-		return "OPÇÃO INVÁLIDA! TENTE NOVAMENTE! :( \n";
+		return "OPÇÃO INVÁLIDA! TENTE NOVAMENTE! :(" + System.lineSeparator();
 	}
 
 	/**

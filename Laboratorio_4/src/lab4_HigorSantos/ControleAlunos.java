@@ -13,9 +13,15 @@ import java.util.Iterator;
  */
 public class ControleAlunos {
 	
-	private HashMap <String, Aluno> alunos = new HashMap<>();
-	private ArrayList<Grupo> grupos = new ArrayList<>();
-	private ArrayList<Aluno> respondeuNoQuadro = new ArrayList<>();
+	private HashMap <String, Aluno> alunos;
+	private ArrayList<Grupo> grupos;
+	private ArrayList<Aluno> respondeuNoQuadro;
+	
+	public ControleAlunos() {
+		 this.alunos = new HashMap<>();
+		 this.grupos = new ArrayList<>();
+		 this.respondeuNoQuadro = new ArrayList<>();
+	}
 	
 	/**
 	 * Esse método inicialmente verifica se a matricula recebida já está cadastrada,
@@ -34,11 +40,11 @@ public class ControleAlunos {
 		verificaExcecao(curso);
 		
 		if (this.alunos.containsKey(matricula)){
-			return "MATRÍCULA JÁ CADASTRADA!\n";
+			return "MATRÍCULA JÁ CADASTRADA!" + System.lineSeparator();
 		}
 		
 		this.alunos.put(matricula, new Aluno(matricula, nome, curso));
-		return "CADASTRO REALIZADO!\n";
+		return "CADASTRO REALIZADO!" + System.lineSeparator();
 	}
 	
 	/**
@@ -78,11 +84,11 @@ public class ControleAlunos {
 		for (Iterator<Grupo> iterator = this.grupos.iterator(); iterator.hasNext();) {
 			Grupo grupo = (Grupo) iterator.next();
 			if (grupo.getNome().equalsIgnoreCase(nomeGrupo)) {
-				return "GRUPO JÁ CADASTRADO!\n";
+				return "GRUPO JÁ CADASTRADO!" + System.lineSeparator();
 			}
 		}
 		this.grupos.add(new Grupo(nomeGrupo));
-		return "CADASTRO REALIZADO!\n";
+		return "CADASTRO REALIZADO!" + System.lineSeparator();
 	}
 	
 	/**
@@ -102,18 +108,18 @@ public class ControleAlunos {
 		verificaExcecao(nomeGrupo);
 		
 		if (!alunos.containsKey(matricula)) {
-			return "ALUNO NÃO CADASTRADO!\n";
+			return "ALUNO NÃO CADASTRADO!" + System.lineSeparator();
 		}
 		
 		for (Iterator<Grupo> iterator = this.grupos.iterator(); iterator.hasNext();) {
 			Grupo grupo = (Grupo) iterator.next();
 			if (grupo.getNome().equalsIgnoreCase(nomeGrupo)) {
 				grupo.alocaAluno(alunos.get(matricula));
-				return "ALUNO ALOCADO!\n";
+				return "ALUNO ALOCADO!" + System.lineSeparator();
 			}
 		}
 		
-		return "GRUPO NÃO CADASTRADO!\n";
+		return "GRUPO NÃO CADASTRADO!" + System.lineSeparator();
 	}
 	
 	/**
@@ -135,7 +141,7 @@ public class ControleAlunos {
 			}
 		}
 		
-		return "GRUPO NÃO CADASTRADO.\n";
+		return "GRUPO NÃO CADASTRADO." + System.lineSeparator();
 	}
 	
 	/**
@@ -152,11 +158,11 @@ public class ControleAlunos {
 		verificaExcecao(matricula);
 		
 		if (!alunos.containsKey(matricula)) {
-			return "ALUNO NÃO CADASTRADO!\n";
+			return "ALUNO NÃO CADASTRADO!" + System.lineSeparator();
 		}
 		
 		this.respondeuNoQuadro.add(this.alunos.get(matricula));
-		return "ALUNO REGISTRADO!\n";
+		return "ALUNO REGISTRADO!" + System.lineSeparator();
 	}
 	
 	/**
@@ -167,15 +173,15 @@ public class ControleAlunos {
 	 * questões no quadro.
 	 */
 	public String listarRespondeuQuestao() {
-		String saida = "Alunos:\n";
+		String saida = "Alunos:" + System.lineSeparator();
 		
 		if (this.respondeuNoQuadro.size() == 0) {
-			return saida + "NENHUM ALUNO CADASTRADO AINDA!\n";
+			return saida + "NENHUM ALUNO CADASTRADO AINDA!" + System.lineSeparator();
 		}
 		
 		for (int i = 0; i < this.respondeuNoQuadro.size(); i++) {
 			Aluno aluno = this.respondeuNoQuadro.get(i);
-			saida += (i + 1) + ". " + aluno.toString() + "\n";
+			saida += (i + 1) + ". " + aluno.toString() + System.lineSeparator();
 		}
 		
 		return saida;
@@ -187,10 +193,10 @@ public class ControleAlunos {
 	 * @param op é o dado que irá ser validado.
 	 */
 	private void verificaExcecao(String op) {
-		if (op.equals("")) {
-			throw new IllegalArgumentException("A ENTRADA PASSADA É VAZIA");
-		} else if (op.equals(null)) {
+		if (op == null) {
 			throw new NullPointerException("A ENTRADA PASSADA É NULA");
+		} else if (op.trim().equals("")) {
+			throw new IllegalArgumentException("A ENTRADA PASSADA É VAZIA");
 		}
 	}
 	

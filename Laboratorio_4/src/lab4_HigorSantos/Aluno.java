@@ -20,6 +20,10 @@ public class Aluno {
 	 * @param curso
 	 */
 	public Aluno(String matricula, String nome, String curso) {
+		verificaExcecao(curso);
+		verificaExcecao(nome);
+		verificaExcecao(matricula);
+		
 		this.matricula = matricula;
 		this.nome = nome;
 		this.curso = curso;
@@ -52,10 +56,10 @@ public class Aluno {
 	 * @param op é o dado que irá ser validado.
 	 */
 	public void verificaExcecao(String op) {
-		if (op.equals("")) {
-			throw new IllegalArgumentException("A ENTRADA PASSADA É VAZIA");
-		} else if (op.equals(null)) {
+		if (op == null) {
 			throw new NullPointerException("A ENTRADA PASSADA É NULA");
+		} else if (op.trim().equals("")) {
+			throw new IllegalArgumentException("A ENTRADA PASSADA É VAZIA");
 		}
 	}
 

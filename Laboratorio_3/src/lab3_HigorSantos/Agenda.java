@@ -9,9 +9,9 @@ public class Agenda {
 	public String cadastraContato(int posicao, String nome, String sobrenome, String telefone) {
 		try {
 			this.agenda[posicao - 1] = new Contato(nome, sobrenome, telefone);
-			return "CADASTRO REALIZADO!\n";
+			return "CADASTRO REALIZADO!" + System.lineSeparator();
 		} catch (IndexOutOfBoundsException ibe) {
-			return "POSIÇÃO INVÁLIDA!\n";
+			return "POSIÇÃO INVÁLIDA!" + System.lineSeparator();
 		}
 	}
 	
@@ -20,16 +20,24 @@ public class Agenda {
 	}
 	
 	public String listarContatos() {
-		String print = "VOCÊ NÃO REGISTROU NENHUM CONTATO\n";
-		for (int i = 0; i < agenda.length; i++) {
-			if (agenda[i] != null) {
+		String print = "VOCÊ NÃO REGISTROU NENHUM CONTATO" + System.lineSeparator();
+		for (int i = 0; i < this.agenda.length; i++) {
+			if (this.agenda[i] != null) {
 				if (i == 0) {
 					print = "";
 				}
-			print += (i + 1) + " - " + agenda[i].getNome() + "\n";
+			print += (i + 1) + " - " + this.agenda[i].getNome() + System.lineSeparator();
 			}
 		}
 		return print;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(agenda);
+		return result;
 	}
 
 	@Override
