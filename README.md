@@ -13,7 +13,7 @@ Repositório com os laboratórios e as provas desenvolvidas ao longo da discipli
 ## Links
 
 * [Laboratório 2](/Laboratorio_2 "LABORATÓRIO 2")
-* Laboratório 3
+* [Laboratório 3](/Laboratorio_3 "LABORATÓRIO 3")
 * Laboratório 4
 * [Laboratório 5 - SAGA](https://github.com/HigorSnt/SAGA "SAGA")
 * [Simulado](/Simulado "Simulado")
