@@ -2,7 +2,6 @@ package Simulado;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CardapioTest {
@@ -23,54 +22,58 @@ class CardapioTest {
 		Cardapio c1 = new Cardapio("LancheTop");
 		Cardapio c2 = new Cardapio("LancheTop", 20);
 		
-		assertEquals("LancheTop" + System.lineSeparator() + 
-				"NÃO FOI CADASTRADO NENHUMA COMIDA.", c2.listaCardapio());
+		assertEquals("LancheTop" + System.lineSeparator() + "NÃO FOI CADASTRADO NENHUMA COMIDA.", c1.listaCardapio());
+		assertEquals(5, c1.getTamanhoCardapio());
+		assertEquals("LancheTop" + System.lineSeparator() + "NÃO FOI CADASTRADO NENHUMA COMIDA.", c2.listaCardapio());
+		assertEquals(20, c2.getTamanhoCardapio());
 	}
 
 	
 	@Test
 	void testAdicionaItem() {
 		Cardapio menu = new Cardapio("LancheTop", 2);
-		menu.adicionaItem(a);
-		menu.adicionaItem(e);
+		menu.adicionaItem(this.a);
+		menu.adicionaItem(this.e);
 		assertEquals("LancheTop" + System.lineSeparator() + "1 - arroz branco - 100 calorias/porção." + System.lineSeparator() + 
-				"2 - feijao verde - 90 calorias/porção.\n", menu.listaCardapio());
+				"2 - feijao verde - 90 calorias/porção." + System.lineSeparator(), menu.listaCardapio());
 		Cardapio menuVazio = new Cardapio("teste", 2);
-		assertEquals("teste\nNÃO FOI CADASTRADO NENHUMA COMIDA.", menuVazio.listaCardapio());
+		assertEquals("teste" + System.lineSeparator() + "NÃO FOI CADASTRADO NENHUMA COMIDA.", menuVazio.listaCardapio());
 	}
 
 	@Test
 	void testListaCardapio() {
-		menu.adicionaItem(a);
-		menu.adicionaItem(b);
-		menu.adicionaItem(c);
-		menu.adicionaItem(d);
-		menu.adicionaItem(e);
-		menu.adicionaItem(f);
-		menu.adicionaItem(g);
-		menu.adicionaItem(h);
-		assertEquals("kjbjkf\n1 - arroz branco - 100 calorias/porção.\n2 - arroz a grega - 200 calorias/porção.\n3 - macarrao - 200 calorias/porção.\n4 - feijoada - 150 calorias/porção.\n"
-				+ "5 - feijao verde - 90 calorias/porção.\n6 - frango assado - 90 calorias/porção.\n7 - bife - 100 calorias/porção.\n"
-				+ "8 - vinagrete - 0 calorias/porção.\n", menu.listaCardapio());
+		this.menu.adicionaItem(this.a);
+		this.menu.adicionaItem(this.b);
+		this.menu.adicionaItem(this.c);
+		this.menu.adicionaItem(this.d);
+		this.menu.adicionaItem(this.e);
+		this.menu.adicionaItem(this.f);
+		this.menu.adicionaItem(this.g);
+		this.menu.adicionaItem(this.h);
+		assertEquals("kjbjkf" + System.lineSeparator() + "1 - arroz branco - 100 calorias/porção." + System.lineSeparator() + 
+				"2 - arroz a grega - 200 calorias/porção." + System.lineSeparator() + "3 - macarrao - 200 calorias/porção." + System.lineSeparator() + 
+				"4 - feijoada - 150 calorias/porção." + System.lineSeparator() + "5 - feijao verde - 90 calorias/porção." + System.lineSeparator() + 
+				"6 - frango assado - 90 calorias/porção." + System.lineSeparator() + "7 - bife - 100 calorias/porção." + System.lineSeparator() +
+				"8 - vinagrete - 0 calorias/porção." + System.lineSeparator(), this.menu.listaCardapio());
 	}
 
 	@Test
 	void testCalcularCaloriasRefeicao() {
-		menu.adicionaItem(a);
-		menu.adicionaItem(b);
-		menu.adicionaItem(c);
-		menu.adicionaItem(d);
-		menu.adicionaItem(e);
-		menu.adicionaItem(f);
-		menu.adicionaItem(g);
-		menu.adicionaItem(h);
+		this.menu.adicionaItem(this.a);
+		this.menu.adicionaItem(this.b);
+		this.menu.adicionaItem(this.c);
+		this.menu.adicionaItem(this.d);
+		this.menu.adicionaItem(this.e);
+		this.menu.adicionaItem(this.f);
+		this.menu.adicionaItem(this.g);
+		this.menu.adicionaItem(this.h);
 		
 		String[] refeicao1 = {"arroz branco", "feijoada", "vinagrete"};
-		assertEquals(250, menu.calcularCaloriasRefeicao(refeicao1, "padrao"));
-		assertEquals(500, menu.calcularCaloriasRefeicao(refeicao1, "grande"));
-		assertEquals(750, menu.calcularCaloriasRefeicao(refeicao1, "mega"));
+		assertEquals(250, this.menu.calcularCaloriasRefeicao(refeicao1, "padrao"));
+		assertEquals(500, this.menu.calcularCaloriasRefeicao(refeicao1, "grande"));
+		assertEquals(750, this.menu.calcularCaloriasRefeicao(refeicao1, "mega"));
 		String[] refeicao2 = {"arroz branco", "salada", "vinagrete"};
-		assertThrows(IllegalArgumentException.class, ()-> menu.calcularCaloriasRefeicao(refeicao2, "padrao"));
+		assertThrows(IllegalArgumentException.class, ()-> this.menu.calcularCaloriasRefeicao(refeicao2, "padrao"));
 	}
 
 }

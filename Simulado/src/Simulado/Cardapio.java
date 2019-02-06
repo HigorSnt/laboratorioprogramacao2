@@ -3,34 +3,34 @@ package Simulado;
 public class Cardapio {
 
 	private String nomeLanchonete;
-	private Item[] menu;
+	private Item[] cardapio;
 	private int qtdItemAdd;
 	
 	public Cardapio(String nomeLanchonete) {
 		this.nomeLanchonete = nomeLanchonete;
-		this.menu = new Item[5];
+		this.cardapio = new Item[5];
 		this.qtdItemAdd = 0;
 	}
 	
 	public Cardapio(String nomeLanchonete, int itens) {
 		this.nomeLanchonete = nomeLanchonete;
-		this.menu = new Item[itens];
+		this.cardapio = new Item[itens];
 		this.qtdItemAdd = 0;
 	}
 	
 	public void adicionaItem(Item item) {
-		this.menu[qtdItemAdd] = item;
+		this.cardapio[qtdItemAdd] = item;
 		this.qtdItemAdd++;
 	}
 	
 	public String listaCardapio() {
 		String saida = this.nomeLanchonete + System.lineSeparator() + "NÃO FOI CADASTRADO NENHUMA COMIDA.";
 		if (this.qtdItemAdd != 0) {
-			for (int i = 0; i < this.menu.length; i++) {
+			for (int i = 0; i < this.cardapio.length; i++) {
 				if (i == 0) {
 					saida = this.nomeLanchonete + System.lineSeparator();
 				}
-				saida += (i+1) + " - " + this.menu[i].getAlimento() + " - " + this.menu[i].getCaloria() + 
+				saida += (i+1) + " - " + this.cardapio[i].getNomeAlimento() + " - " + this.cardapio[i].getCaloria() + 
 						" calorias/porção." + System.lineSeparator();
 			}
 		}
@@ -41,12 +41,13 @@ public class Cardapio {
 		int calorias = 0;
 		for (String a : refeicao) {
 			boolean naoExiste = true;
-			for (Item b : this.menu) {
-				if (b.getAlimento().equals(a)) {
+			for (Item b : this.cardapio) {
+				if (b.getNomeAlimento().equalsIgnoreCase(a)) {
 					calorias += b.getCaloria();
 					naoExiste = false;
 				}
 			}
+			
 			if (naoExiste) {
 				throw new IllegalArgumentException("ALIMENTO NÃO CADASTRADO!");
 			}
@@ -59,6 +60,10 @@ public class Cardapio {
 		}
 		
 		return calorias;
+	}
+	
+	public int getTamanhoCardapio() {
+		return this.cardapio.length;
 	}
 	
 }

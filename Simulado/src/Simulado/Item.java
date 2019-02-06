@@ -10,7 +10,7 @@ public class Item {
 		this.caloria = caloria;
 	}
 
-	public String getAlimento() {
+	public String getNomeAlimento() {
 		return this.nome_comida;
 	}
 
@@ -45,7 +45,7 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return nome_comida + ", possui " + caloria + " caloria(s) por porção.";
+		return this.nome_comida + ", possui " + this.caloria + " caloria(s) por porção.";
 	}
 	
 	
