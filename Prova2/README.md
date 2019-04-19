@@ -13,9 +13,9 @@ Funcionalidades do sistema a ser criado:
 
 
 1. **Cadastrar caixas decorativas no estoque**. Toda caixa decorativa tem uma descrição única (que sua tia usa para localizar a caixa), a personalização da caixa (que pode ser "arte em tecido", "colagem" ou "pintura à mão"), formato (que pode ser pentagonal, circular ou retangular) e as dimensões da tampa da caixa (importantes para calcular o preço). Essas dimensões mudam dependendo do formato da caixa:  
->> a. Pentagonal: lado (e altura calculada com base no lado);  
->> b. Retangular: lado1, lado2;  
->> c. Circular: raio do círculo;
+> a. Pentagonal: lado (e altura calculada com base no lado);  
+> b. Retangular: lado1, lado2;  
+> c. Circular: raio do círculo;
 
 Mais informações úteis sobre as caixas a serem cadastradas no estoque:
 
@@ -35,13 +35,13 @@ Mais informações úteis sobre as caixas a serem cadastradas no estoque:
 
 
 2. O estoque vai manter uma coleção de caixas personalizadas independente do seu formato e decoração específica. Além de cadastrar caixas no estoque, deve ser possível:  
->>a. **Modificar o tipo de personalização de uma caixa** específica identificada pela sua descrição única.  
->>b. **Remover (retornando boolean) uma caixa do estoque** (identificando essa caixa pela sua descrição única);  
->>c. **Obter o número de caixas no estoque**;  
->>d. **Consultar** se o estoque possui uma determinada caixa com uma personalização e formato específicos;  
->>e. **Retornar as caixas com uma personalização de interesse**, ordenadas pela descrição única da caixa;  
->>f. **Retornar as caixas com um formato de interesse**, ordenadas pela descrição única da caixa;  
->>g. **Calcular o total de rendimentos** que sua tia pode obter se ela vender todas as caixas do estoque.
+>a. **Modificar o tipo de personalização de uma caixa** específica identificada pela sua descrição única.  
+>b. **Remover (retornando boolean) uma caixa do estoque** (identificando essa caixa pela sua descrição única);  
+>c. **Obter o número de caixas no estoque**;  
+>d. **Consultar** se o estoque possui uma determinada caixa com uma personalização e formato específicos;  
+>e. **Retornar as caixas com uma personalização de interesse**, ordenadas pela descrição única da caixa;  
+>f. **Retornar as caixas com um formato de interesse**, ordenadas pela descrição única da caixa;  
+>g. **Calcular o total de rendimentos** que sua tia pode obter se ela vender todas as caixas do estoque.
 
 
 3. Escreva **testes de unidade** para a classe mais alta da sua hierarquia de caixas decorativas.
